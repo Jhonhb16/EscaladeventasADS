@@ -1,4 +1,4 @@
 # Publica el sitio portafolio (carpeta estática, sin compilación).
 [build]
-  base    = "portfolio"
+  base    = "docs"
   publish = "."
