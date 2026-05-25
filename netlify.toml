@@ -1,5 +1,4 @@
+# Publica el sitio portafolio (carpeta estática, sin compilación).
 [build]
-  base    = "docusaurus/website"
-  publish = "docusaurus/website/build"
-  command = "npm run build"
-  
+  base    = "portfolio"
+  publish = "."
