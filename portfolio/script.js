@@ -4,9 +4,9 @@
 const CONFIG = {
   // Número de WhatsApp con código de país, SIN signos ni espacios.
   // Ej. México: "521234567890" — España: "34123456789"
-  whatsapp: "000000000000",
+  whatsapp: "573171165383",
   // Mensaje por defecto al pulsar los botones de WhatsApp.
-  whatsappDefaultMsg: "Hola, quiero información sobre tus servicios",
+  whatsappDefaultMsg: "Hola Jhon Mario, quiero mejorar el marketing de mi negocio",
 };
 
 /* ===================================================== */

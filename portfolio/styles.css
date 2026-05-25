@@ -179,12 +179,14 @@ a { color: inherit; text-decoration: none; }
 .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; }
 .about-media { position: relative; }
 .about-photo {
+  width: 100%;
   aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
   border-radius: var(--radius);
-  background: var(--grad);
-  display: grid; place-items: center;
-  color: rgba(255,255,255,0.85); font-family: "Outfit"; font-weight: 700; font-size: 1.2rem; text-align: center;
   box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 .about-badge {
   position: absolute; bottom: -16px; right: -10px;
