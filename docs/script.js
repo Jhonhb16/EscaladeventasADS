@@ -6,6 +6,9 @@ const CONFIG = {
   whatsapp: "573171165383",
   // Default language: "en" or "es".
   defaultLang: "en",
+  // Paste your VSL link here (YouTube or Vimeo). Leave "" to show the placeholder.
+  // Examples: "https://youtu.be/XXXXXXXXXXX" or "https://vimeo.com/123456789"
+  vsl: "",
 };
 
 /* =====================================================
@@ -14,16 +17,23 @@ const CONFIG = {
 const I18N = {
   en: {
     doc_title: "Jhon Mario Hernandez | Free Month of Ad Management for US Businesses",
-    nav_offer: "The Offer", nav_how: "How it works", nav_guarantee: "Guarantee", nav_about: "About", nav_apply: "Apply free",
+    nav_offer: "The Offer", nav_proof: "Results", nav_how: "How it works", nav_guarantee: "Guarantee", nav_about: "About", nav_apply: "Apply free",
 
-    hero_eyebrow: "🇺🇸 Free 30-day trial · For serious businesses",
+    hero_eyebrow: "Free 30-day trial · For serious US businesses",
     hero_title: 'Get a full month of ad management <span class="gradient-text">100% free</span>',
     hero_subtitle: "Your business doesn't need more traffic. It needs better marketing.",
     hero_lead: "I build and manage profitable Meta &amp; Google Ads campaigns for US businesses. Try me free for 30 days — if we're a fit, we scale together. Spots are limited.",
-    hero_cta1: "Claim my free month", hero_cta2: "See what's included",
+    hero_cta1: "Claim my free month", hero_cta2: "Watch the video",
     chip1: "days completely free", chip2: "results guarantee", chip3: "risk for you",
 
+    vsl_eyebrow: "Watch this first · 2 min",
+    vsl_title: 'How I get you more customers <span class="gradient-text">without the guesswork</span>',
+    vsl_desc: "Press play to see exactly how the free month works — and whether we're a fit.",
+    vsl_ph: "Your VSL goes here. Send me your YouTube or Vimeo link and I'll embed it.",
+    vsl_cta: "I'm in — apply now",
+
     trust_label: "Platforms I work with",
+    cert_label: "Certified in",
 
     offer_eyebrow: "The offer",
     offer_title: 'Everything you get in your <span class="gradient-text">free month</span>',
@@ -37,14 +47,24 @@ const I18N = {
     offer_note: "No upfront fee. You only cover your own ad spend.",
     offer_cta: "Claim my free month",
 
+    proof_eyebrow: "Real results",
+    proof_title: 'Numbers that <span class="gradient-text">speak for themselves</span>',
+    proof_desc: "Add your own ad-account screenshots and client results here — proof converts better than promises.",
+    proof_slot: "Your result screenshot",
+    proof_cap1: "e.g. ROAS / sales from an ad account",
+    proof_cap2: "e.g. cost per lead reduction",
+    proof_cap3: "e.g. revenue growth over time",
+    proof_logos: "Trusted by",
+    logo_slot: "Logo",
+
     for_eyebrow: "Qualification",
     for_title: 'Is this <span class="gradient-text">for you</span>?',
     for_desc: "I only take on a handful of clients to keep results high. Here's who I can help.",
-    fit_yes_t: "✅ This is for you if…",
+    fit_yes_t: "This is for you if…",
     fit_yes_1: "You have an established business with a product or service that already sells.",
     fit_yes_2: "You're ready to invest in ad spend to grow after your free month.",
     fit_yes_3: "You want a partner who's accountable to results, not vanity metrics.",
-    fit_no_t: "❌ This is NOT for you if…",
+    fit_no_t: "This is NOT for you if…",
     fit_no_1: "You're brand new with no clear offer or way to fulfill orders.",
     fit_no_2: "You're only looking for the cheapest option, not the best return.",
     fit_no_3: "You can't sustain an ad budget once the free month ends.",
@@ -62,17 +82,17 @@ const I18N = {
     s3_t: "Your free month", s3_d: "I build, launch and manage your campaigns at no cost for 30 days.",
     s4_t: "Scale together", s4_d: "Love the results? We continue and scale what's working.",
 
-    about_badge: "💼 Taking on new clients",
+    about_badge: "Taking on new clients",
     about_eyebrow: "About me",
     about_title: 'Strategy + data = <span class="gradient-text">sales</span>',
     about_p1: "I'm <strong>Jhon Mario Hernandez</strong>, a digital advertising specialist who helps US businesses turn ad spend into real customers — with profitable campaigns and decisions driven by data.",
     about_p2: "My approach blends creative that connects with rigorous analysis, so every dollar you invest works as hard as possible.",
-    about_li1: "✔ Campaigns built around return on investment (ROAS)",
-    about_li2: "✔ Clear reporting and constant communication",
-    about_li3: "✔ Strategies tailored to your business and budget",
+    about_li1: "Campaigns built around return on investment (ROAS)",
+    about_li2: "Clear reporting and constant communication",
+    about_li3: "Strategies tailored to your business and budget",
     about_cta: "Start my free month",
 
-    t_eyebrow: "Results",
+    t_eyebrow: "Testimonials",
     t_title: 'What clients <span class="gradient-text">say</span>',
     t_desc: "Replace these examples with real client testimonials.",
     t1_q: '"We tripled our online sales in 3 months. The campaigns are finally profitable and I understand where every dollar goes."', t1_r: "Fashion e-commerce",
@@ -82,9 +102,9 @@ const I18N = {
     apply_eyebrow: "Apply now · Limited spots",
     apply_title: 'Apply for your <span class="gradient-text">free month</span>',
     apply_desc: "I personally review every application and only accept a few clients each month. Tell me about your business below.",
-    apply_perk1: "✓ 30 days of ad management, free",
-    apply_perk2: "✓ Results guarantee",
-    apply_perk3: "✓ No long-term contract to start",
+    apply_perk1: "30 days of ad management, free",
+    apply_perk2: "Results guarantee",
+    apply_perk3: "No long-term contract to start",
 
     f_name: "Your name", f_name_ph: "Full name",
     f_email: "Email", f_email_ph: "you@email.com",
@@ -104,16 +124,23 @@ const I18N = {
 
   es: {
     doc_title: "Jhon Mario Hernandez | Un mes gratis de gestión de anuncios para negocios",
-    nav_offer: "La oferta", nav_how: "Cómo funciona", nav_guarantee: "Garantía", nav_about: "Sobre mí", nav_apply: "Aplicar gratis",
+    nav_offer: "La oferta", nav_proof: "Resultados", nav_how: "Cómo funciona", nav_guarantee: "Garantía", nav_about: "Sobre mí", nav_apply: "Aplicar gratis",
 
-    hero_eyebrow: "🇺🇸 Prueba gratis de 30 días · Para negocios serios",
+    hero_eyebrow: "Prueba gratis de 30 días · Para negocios serios de USA",
     hero_title: 'Recibe un mes completo de gestión de anuncios <span class="gradient-text">100% gratis</span>',
     hero_subtitle: "Tu negocio no necesita más tráfico, necesita mejorar su Marketing.",
     hero_lead: "Creo y gestiono campañas rentables de Meta y Google Ads. Pruébame gratis durante 30 días: si encajamos, escalamos juntos. Los cupos son limitados.",
-    hero_cta1: "Quiero mi mes gratis", hero_cta2: "Ver qué incluye",
+    hero_cta1: "Quiero mi mes gratis", hero_cta2: "Ver el video",
     chip1: "días totalmente gratis", chip2: "garantía de resultados", chip3: "riesgo para ti",
 
+    vsl_eyebrow: "Mira esto primero · 2 min",
+    vsl_title: 'Cómo consigo más clientes para ti <span class="gradient-text">sin adivinar</span>',
+    vsl_desc: "Dale play para ver exactamente cómo funciona el mes gratis — y si encajamos.",
+    vsl_ph: "Aquí va tu VSL. Envíame tu enlace de YouTube o Vimeo y lo incrusto.",
+    vsl_cta: "Me apunto — aplicar ahora",
+
     trust_label: "Plataformas con las que trabajo",
+    cert_label: "Certificado en",
 
     offer_eyebrow: "La oferta",
     offer_title: 'Todo lo que recibes en tu <span class="gradient-text">mes gratis</span>',
@@ -127,14 +154,24 @@ const I18N = {
     offer_note: "Sin cuota inicial. Solo cubres tu propia inversión publicitaria.",
     offer_cta: "Quiero mi mes gratis",
 
+    proof_eyebrow: "Resultados reales",
+    proof_title: 'Números que <span class="gradient-text">hablan por sí solos</span>',
+    proof_desc: "Agrega aquí tus capturas de cuentas publicitarias y resultados de clientes — la prueba convierte mejor que las promesas.",
+    proof_slot: "Tu captura de resultados",
+    proof_cap1: "ej. ROAS / ventas de una cuenta publicitaria",
+    proof_cap2: "ej. reducción del costo por lead",
+    proof_cap3: "ej. crecimiento de ingresos en el tiempo",
+    proof_logos: "Confían en mí",
+    logo_slot: "Logo",
+
     for_eyebrow: "Calificación",
     for_title: '¿Es esto <span class="gradient-text">para ti</span>?',
     for_desc: "Solo acepto a unos pocos clientes para mantener los resultados altos. Esto es a quién puedo ayudar.",
-    fit_yes_t: "✅ Esto es para ti si…",
+    fit_yes_t: "Esto es para ti si…",
     fit_yes_1: "Tienes un negocio establecido con un producto o servicio que ya vende.",
     fit_yes_2: "Estás listo para invertir en publicidad y crecer después de tu mes gratis.",
     fit_yes_3: "Quieres un aliado responsable de los resultados, no de métricas vanidosas.",
-    fit_no_t: "❌ Esto NO es para ti si…",
+    fit_no_t: "Esto NO es para ti si…",
     fit_no_1: "Apenas empiezas y no tienes una oferta clara ni cómo cumplir los pedidos.",
     fit_no_2: "Solo buscas la opción más barata, no el mejor retorno.",
     fit_no_3: "No puedes sostener un presupuesto de anuncios cuando termine el mes gratis.",
@@ -152,17 +189,17 @@ const I18N = {
     s3_t: "Tu mes gratis", s3_d: "Creo, lanzo y gestiono tus campañas sin costo durante 30 días.",
     s4_t: "Escalamos juntos", s4_d: "¿Te encantan los resultados? Continuamos y escalamos lo que funciona.",
 
-    about_badge: "💼 Aceptando nuevos clientes",
+    about_badge: "Aceptando nuevos clientes",
     about_eyebrow: "Sobre mí",
     about_title: 'Estrategia + datos = <span class="gradient-text">ventas</span>',
     about_p1: "Soy <strong>Jhon Mario Hernandez</strong>, especialista en publicidad digital que ayuda a negocios a convertir su inversión en anuncios en clientes reales — con campañas rentables y decisiones basadas en datos.",
     about_p2: "Mi enfoque combina creativos que conectan con un análisis riguroso, para que cada dólar que inviertas trabaje al máximo.",
-    about_li1: "✔ Campañas orientadas al retorno de inversión (ROAS)",
-    about_li2: "✔ Reportes claros y comunicación constante",
-    about_li3: "✔ Estrategias adaptadas a tu negocio y presupuesto",
+    about_li1: "Campañas orientadas al retorno de inversión (ROAS)",
+    about_li2: "Reportes claros y comunicación constante",
+    about_li3: "Estrategias adaptadas a tu negocio y presupuesto",
     about_cta: "Empezar mi mes gratis",
 
-    t_eyebrow: "Resultados",
+    t_eyebrow: "Testimonios",
     t_title: 'Lo que dicen mis <span class="gradient-text">clientes</span>',
     t_desc: "Reemplaza estos ejemplos con testimonios reales de clientes.",
     t1_q: '"Triplicamos las ventas online en 3 meses. Las campañas por fin son rentables y entiendo a dónde va cada dólar."', t1_r: "E-commerce de moda",
@@ -172,9 +209,9 @@ const I18N = {
     apply_eyebrow: "Aplica ahora · Cupos limitados",
     apply_title: 'Aplica para tu <span class="gradient-text">mes gratis</span>',
     apply_desc: "Reviso personalmente cada aplicación y solo acepto a unos pocos clientes al mes. Cuéntame sobre tu negocio.",
-    apply_perk1: "✓ 30 días de gestión de anuncios, gratis",
-    apply_perk2: "✓ Garantía de resultados",
-    apply_perk3: "✓ Sin contrato a largo plazo para empezar",
+    apply_perk1: "30 días de gestión de anuncios, gratis",
+    apply_perk2: "Garantía de resultados",
+    apply_perk3: "Sin contrato a largo plazo para empezar",
 
     f_name: "Tu nombre", f_name_ph: "Nombre completo",
     f_email: "Email", f_email_ph: "tu@email.com",
@@ -235,6 +272,41 @@ const I18N = {
 
   applyLang(lang);
 
+  // --- VSL player (YouTube / Vimeo) ---
+  function vslEmbedUrl(url) {
+    if (!url) return null;
+    const yt = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+    if (yt) return `https://www.youtube.com/embed/${yt[1]}?autoplay=1&rel=0&modestbranding=1`;
+    const vm = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (vm) return `https://player.vimeo.com/video/${vm[1]}?autoplay=1`;
+    return null;
+  }
+
+  const vslPlayer = document.getElementById("vsl-player");
+  const vslPlay = vslPlayer && vslPlayer.querySelector(".vsl-play");
+  if (vslPlayer && CONFIG.vsl) {
+    const embed = vslEmbedUrl(CONFIG.vsl);
+    if (embed) {
+      vslPlayer.classList.add("vsl-ready");
+      const phText = vslPlayer.querySelector(".vsl-ph-text");
+      if (phText) phText.remove();
+      const yt = CONFIG.vsl.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+      if (yt) vslPlayer.style.backgroundImage = `url("https://img.youtube.com/vi/${yt[1]}/hqdefault.jpg")`;
+      if (vslPlay) {
+        vslPlay.addEventListener("click", () => {
+          const iframe = document.createElement("iframe");
+          iframe.className = "vsl-iframe";
+          iframe.src = embed;
+          iframe.title = "Video";
+          iframe.allow = "autoplay; fullscreen; picture-in-picture";
+          iframe.allowFullscreen = true;
+          vslPlayer.innerHTML = "";
+          vslPlayer.appendChild(iframe);
+        });
+      }
+    }
+  }
+
   // --- Mobile menu ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
@@ -253,7 +325,7 @@ const I18N = {
 
   // --- Scroll reveal ---
   const revealTargets = document.querySelectorAll(
-    ".offer-list li, .fit-card, .step, .testimonial, .section-head, .about-media, .about-body, .hero-stats li, .guarantee"
+    ".offer-list li, .fit-card, .step, .testimonial, .section-head, .about-media, .about-body, .hero-stats li, .guarantee, .vsl-player, .proof-item, .logos-row"
   );
   revealTargets.forEach((el) => el.classList.add("reveal"));
   if ("IntersectionObserver" in window) {

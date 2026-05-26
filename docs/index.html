@@ -16,6 +16,19 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- ====== ICON SPRITE ====== -->
+  <svg width="0" height="0" class="svg-sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" /></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><polyline points="9 12 11 14 15 10" /></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" /><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2" /></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" /><path d="m22 6-10 7L2 6" /></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z" /></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><polygon points="7 4 21 12 7 20 7 4" fill="currentColor" stroke="none" /></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 7" /><polyline points="15 7 21 7 21 13" /></symbol>
+  </svg>
+
   <!-- ====== HEADER / NAV ====== -->
   <header class="site-header" id="top">
     <nav class="nav container">
@@ -28,7 +41,7 @@
       </button>
       <ul class="nav-links">
         <li><a href="#offer" data-i18n="nav_offer">The Offer</a></li>
-        <li><a href="#how" data-i18n="nav_how">How it works</a></li>
+        <li><a href="#proof" data-i18n="nav_proof">Results</a></li>
         <li><a href="#guarantee" data-i18n="nav_guarantee">Guarantee</a></li>
         <li><a href="#about" data-i18n="nav_about">About</a></li>
         <li class="nav-lang">
@@ -50,13 +63,13 @@
         <span class="blob blob-3"></span>
       </div>
       <div class="container hero-inner">
-        <p class="eyebrow" data-i18n="hero_eyebrow">🇺🇸 Free 30-day trial · For serious businesses</p>
+        <p class="eyebrow" data-i18n="hero_eyebrow">Free 30-day trial · For serious US businesses</p>
         <h1 class="hero-title" data-i18n="hero_title">Get a full month of ad management <span class="gradient-text">100% free</span></h1>
         <p class="hero-subtitle" data-i18n="hero_subtitle">Your business doesn't need more traffic. It needs better marketing.</p>
         <p class="hero-lead" data-i18n="hero_lead">I build and manage profitable Meta &amp; Google Ads campaigns for US businesses. Try me free for 30 days — if we're a fit, we scale together. Spots are limited.</p>
         <div class="hero-cta">
           <a href="#apply" class="btn btn-primary btn-lg" data-i18n="hero_cta1">Claim my free month</a>
-          <a href="#offer" class="btn btn-ghost btn-lg" data-i18n="hero_cta2">See what's included</a>
+          <a href="#vsl" class="btn btn-ghost btn-lg" data-i18n="hero_cta2">Watch the video</a>
         </div>
         <ul class="hero-stats">
           <li><strong>30</strong><span data-i18n="chip1">days completely free</span></li>
@@ -66,12 +79,39 @@
       </div>
     </section>
 
-    <!-- ====== TRUST ====== -->
+    <!-- ====== VSL ====== -->
+    <section class="section vsl-section" id="vsl">
+      <div class="container vsl-wrap">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="vsl_eyebrow">Watch this first · 2 min</p>
+          <h2 class="section-title" data-i18n="vsl_title">How I get you more customers <span class="gradient-text">without the guesswork</span></h2>
+          <p class="section-desc" data-i18n="vsl_desc">Press play to see exactly how the free month works — and whether we're a fit.</p>
+        </header>
+        <div class="vsl-player" id="vsl-player">
+          <div class="vsl-placeholder">
+            <button class="vsl-play" type="button" aria-label="Play video"><svg class="icon icon-fill"><use href="#i-play" /></svg></button>
+            <p class="vsl-ph-text" data-i18n="vsl_ph">Your VSL goes here. Send me your YouTube or Vimeo link and I'll embed it.</p>
+          </div>
+        </div>
+        <div class="vsl-cta">
+          <a href="#apply" class="btn btn-primary btn-lg" data-i18n="vsl_cta">I'm in — apply now</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TRUST + CERTIFICATIONS ====== -->
     <section class="trust">
       <div class="container trust-inner">
         <span data-i18n="trust_label">Platforms I work with</span>
         <ul class="trust-list">
           <li>Meta Ads</li><li>Google Ads</li><li>Instagram</li><li>YouTube</li><li>TikTok Ads</li><li>GA4</li>
+        </ul>
+      </div>
+      <div class="container cert-strip">
+        <span data-i18n="cert_label">Certified in</span>
+        <ul class="cert-list">
+          <li class="cert-item">Meta Blueprint</li>
+          <li class="cert-item">Google Ads</li>
         </ul>
       </div>
     </section>
@@ -87,11 +127,11 @@
 
         <div class="offer-stack">
           <ul class="offer-list">
-            <li><span class="check">✓</span><div><strong data-i18n="o1_t">Account &amp; funnel audit</strong><p data-i18n="o1_d">Full review of your current ads, tracking and funnel to find what's leaking money.</p></div></li>
-            <li><span class="check">✓</span><div><strong data-i18n="o2_t">Custom ad strategy</strong><p data-i18n="o2_d">A tailored plan with goals, audiences, budget and the funnel to hit them.</p></div></li>
-            <li><span class="check">✓</span><div><strong data-i18n="o3_t">Campaign build &amp; launch</strong><p data-i18n="o3_d">Meta &amp; Google campaigns, creatives, copy, pixels and conversion tracking — done for you.</p></div></li>
-            <li><span class="check">✓</span><div><strong data-i18n="o4_t">Daily optimization</strong><p data-i18n="o4_d">I manage and optimize your campaigns by ROAS and cost per acquisition.</p></div></li>
-            <li><span class="check">✓</span><div><strong data-i18n="o5_t">Clear weekly reporting</strong><p data-i18n="o5_d">Simple reports so you always know what's working and where every dollar goes.</p></div></li>
+            <li><span class="check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong data-i18n="o1_t">Account &amp; funnel audit</strong><p data-i18n="o1_d">Full review of your current ads, tracking and funnel to find what's leaking money.</p></div></li>
+            <li><span class="check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong data-i18n="o2_t">Custom ad strategy</strong><p data-i18n="o2_d">A tailored plan with goals, audiences, budget and the funnel to hit them.</p></div></li>
+            <li><span class="check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong data-i18n="o3_t">Campaign build &amp; launch</strong><p data-i18n="o3_d">Meta &amp; Google campaigns, creatives, copy, pixels and conversion tracking — done for you.</p></div></li>
+            <li><span class="check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong data-i18n="o4_t">Daily optimization</strong><p data-i18n="o4_d">I manage and optimize your campaigns by ROAS and cost per acquisition.</p></div></li>
+            <li><span class="check"><svg class="icon"><use href="#i-check" /></svg></span><div><strong data-i18n="o5_t">Clear weekly reporting</strong><p data-i18n="o5_d">Simple reports so you always know what's working and where every dollar goes.</p></div></li>
           </ul>
           <div class="offer-cta-box">
             <p class="offer-free" data-i18n="offer_free">All of this — free for 30 days.</p>
@@ -102,8 +142,33 @@
       </div>
     </section>
 
+    <!-- ====== PROOF / RESULTS ====== -->
+    <section class="section section-alt" id="proof">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow" data-i18n="proof_eyebrow">Real results</p>
+          <h2 class="section-title" data-i18n="proof_title">Numbers that <span class="gradient-text">speak for themselves</span></h2>
+          <p class="section-desc" data-i18n="proof_desc">Add your own ad-account screenshots and client results here — proof converts better than promises.</p>
+        </header>
+        <div class="proof-grid">
+          <figure class="proof-item"><div class="proof-shot"><svg class="icon"><use href="#i-trend" /></svg><span data-i18n="proof_slot">Your result screenshot</span></div><figcaption data-i18n="proof_cap1">e.g. ROAS / sales from an ad account</figcaption></figure>
+          <figure class="proof-item"><div class="proof-shot"><svg class="icon"><use href="#i-trend" /></svg><span data-i18n="proof_slot">Your result screenshot</span></div><figcaption data-i18n="proof_cap2">e.g. cost per lead reduction</figcaption></figure>
+          <figure class="proof-item"><div class="proof-shot"><svg class="icon"><use href="#i-trend" /></svg><span data-i18n="proof_slot">Your result screenshot</span></div><figcaption data-i18n="proof_cap3">e.g. revenue growth over time</figcaption></figure>
+        </div>
+        <div class="logos-row">
+          <span data-i18n="proof_logos">Trusted by</span>
+          <ul class="logos-list">
+            <li class="logo-slot" data-i18n="logo_slot">Logo</li>
+            <li class="logo-slot" data-i18n="logo_slot">Logo</li>
+            <li class="logo-slot" data-i18n="logo_slot">Logo</li>
+            <li class="logo-slot" data-i18n="logo_slot">Logo</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- ====== WHO IT'S FOR ====== -->
-    <section class="section section-alt" id="for-you">
+    <section class="section" id="for-you">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow" data-i18n="for_eyebrow">Qualification</p>
@@ -112,7 +177,7 @@
         </header>
         <div class="fit-grid">
           <div class="fit-card fit-yes">
-            <h3 data-i18n="fit_yes_t">✅ This is for you if…</h3>
+            <h3 class="fit-head"><span class="ico-badge ico-yes"><svg class="icon"><use href="#i-check" /></svg></span> <span data-i18n="fit_yes_t">This is for you if…</span></h3>
             <ul>
               <li data-i18n="fit_yes_1">You have an established business with a product or service that already sells.</li>
               <li data-i18n="fit_yes_2">You're ready to invest in ad spend to grow after your free month.</li>
@@ -120,7 +185,7 @@
             </ul>
           </div>
           <div class="fit-card fit-no">
-            <h3 data-i18n="fit_no_t">❌ This is NOT for you if…</h3>
+            <h3 class="fit-head"><span class="ico-badge ico-no"><svg class="icon"><use href="#i-x" /></svg></span> <span data-i18n="fit_no_t">This is NOT for you if…</span></h3>
             <ul>
               <li data-i18n="fit_no_1">You're brand new with no clear offer or way to fulfill orders.</li>
               <li data-i18n="fit_no_2">You're only looking for the cheapest option, not the best return.</li>
@@ -132,10 +197,10 @@
     </section>
 
     <!-- ====== GUARANTEE ====== -->
-    <section class="section" id="guarantee">
+    <section class="section section-alt" id="guarantee">
       <div class="container">
         <div class="guarantee">
-          <div class="guarantee-badge">🛡️</div>
+          <div class="guarantee-badge"><svg class="icon"><use href="#i-shield" /></svg></div>
           <div class="guarantee-body">
             <p class="eyebrow" data-i18n="g_eyebrow">My results guarantee</p>
             <h2 class="section-title" data-i18n="g_title">You win, or I keep working <span class="gradient-text">for free</span></h2>
@@ -147,7 +212,7 @@
     </section>
 
     <!-- ====== HOW IT WORKS ====== -->
-    <section class="section section-alt" id="how">
+    <section class="section" id="how">
       <div class="container">
         <header class="section-head">
           <p class="eyebrow" data-i18n="how_eyebrow">How it works</p>
@@ -164,11 +229,11 @@
     </section>
 
     <!-- ====== ABOUT ====== -->
-    <section class="section" id="about">
+    <section class="section section-alt" id="about">
       <div class="container about">
         <div class="about-media">
           <img class="about-photo" src="assets/jhon-mario.png" alt="Jhon Mario Hernandez, digital advertising specialist" width="800" height="1000" loading="lazy" />
-          <div class="about-badge" data-i18n="about_badge">💼 Taking on new clients</div>
+          <div class="about-badge"><svg class="icon"><use href="#i-briefcase" /></svg> <span data-i18n="about_badge">Taking on new clients</span></div>
         </div>
         <div class="about-body">
           <p class="eyebrow" data-i18n="about_eyebrow">About me</p>
@@ -176,9 +241,9 @@
           <p data-i18n="about_p1">I'm <strong>Jhon Mario Hernandez</strong>, a digital advertising specialist who helps US businesses turn ad spend into real customers — with profitable campaigns and decisions driven by data.</p>
           <p data-i18n="about_p2">My approach blends creative that connects with rigorous analysis, so every dollar you invest works as hard as possible.</p>
           <ul class="about-points">
-            <li data-i18n="about_li1">✔ Campaigns built around return on investment (ROAS)</li>
-            <li data-i18n="about_li2">✔ Clear reporting and constant communication</li>
-            <li data-i18n="about_li3">✔ Strategies tailored to your business and budget</li>
+            <li data-i18n="about_li1">Campaigns built around return on investment (ROAS)</li>
+            <li data-i18n="about_li2">Clear reporting and constant communication</li>
+            <li data-i18n="about_li3">Strategies tailored to your business and budget</li>
           </ul>
           <a href="#apply" class="btn btn-primary" data-i18n="about_cta">Start my free month</a>
         </div>
@@ -186,10 +251,10 @@
     </section>
 
     <!-- ====== TESTIMONIALS ====== -->
-    <section class="section section-alt" id="results">
+    <section class="section" id="results">
       <div class="container">
         <header class="section-head">
-          <p class="eyebrow" data-i18n="t_eyebrow">Results</p>
+          <p class="eyebrow" data-i18n="t_eyebrow">Testimonials</p>
           <h2 class="section-title" data-i18n="t_title">What clients <span class="gradient-text">say</span></h2>
           <p class="section-desc" data-i18n="t_desc">Replace these examples with real client testimonials.</p>
         </header>
@@ -202,20 +267,20 @@
     </section>
 
     <!-- ====== APPLICATION FORM ====== -->
-    <section class="section apply" id="apply">
+    <section class="section section-alt apply" id="apply">
       <div class="container apply-inner">
         <div class="apply-info">
           <p class="eyebrow" data-i18n="apply_eyebrow">Apply now · Limited spots</p>
           <h2 class="section-title" data-i18n="apply_title">Apply for your <span class="gradient-text">free month</span></h2>
           <p class="section-desc" data-i18n="apply_desc">I personally review every application and only accept a few clients each month. Tell me about your business below.</p>
           <ul class="apply-perks">
-            <li data-i18n="apply_perk1">✓ 30 days of ad management, free</li>
-            <li data-i18n="apply_perk2">✓ Results guarantee</li>
-            <li data-i18n="apply_perk3">✓ No long-term contract to start</li>
+            <li data-i18n="apply_perk1">30 days of ad management, free</li>
+            <li data-i18n="apply_perk2">Results guarantee</li>
+            <li data-i18n="apply_perk3">No long-term contract to start</li>
           </ul>
           <div class="socials">
-            <a href="https://www.instagram.com/jhonmariohernandezbueno7" target="_blank" aria-label="Instagram" rel="noopener">📷 Instagram</a>
-            <a href="mailto:mariomarketer2@gmail.com">✉️ Email</a>
+            <a href="https://www.instagram.com/jhonmariohernandezbueno7" target="_blank" aria-label="Instagram" rel="noopener"><svg class="icon"><use href="#i-instagram" /></svg> <span>Instagram</span></a>
+            <a href="mailto:mariomarketer2@gmail.com"><svg class="icon"><use href="#i-mail" /></svg> <span>Email</span></a>
           </div>
         </div>
 
@@ -277,7 +342,7 @@
     </div>
   </footer>
 
-  <a class="whatsapp-float" id="whatsapp-float" href="https://wa.me/573171165383" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+  <a class="whatsapp-float" id="whatsapp-float" href="https://wa.me/573171165383" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon"><use href="#i-whatsapp" /></svg></a>
 
   <script src="script.js"></script>
 </body>
