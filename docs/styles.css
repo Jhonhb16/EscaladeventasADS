@@ -117,6 +117,7 @@ a { color: inherit; text-decoration: none; }
 .hero-inner { position: relative; z-index: 1; text-align: center; max-width: 880px; margin: 0 auto; }
 .hero-title { font-size: clamp(2.3rem, 6vw, 4.2rem); font-weight: 900; margin-bottom: 22px; }
 .hero-sub-title { font-size: clamp(1.4rem, 3.4vw, 2.4rem); font-weight: 700; color: var(--text-dim); }
+.hero-subtitle { font-family: "Outfit", sans-serif; font-size: clamp(1.3rem, 3.2vw, 2.1rem); font-weight: 700; color: var(--text); max-width: 740px; margin: 0 auto 22px; line-height: 1.2; }
 .hero-lead { font-size: clamp(1.05rem, 2vw, 1.25rem); color: var(--text-dim); max-width: 660px; margin: 0 auto 34px; }
 .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 54px; }
 .hero-stats { list-style: none; display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
@@ -248,10 +249,50 @@ a { color: inherit; text-decoration: none; }
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.visible { opacity: 1; transform: none; }
 
+/* ====== LANGUAGE TOGGLE ====== */
+.nav-lang { display: flex; align-items: center; gap: 4px; }
+.lang-btn { background: none; border: 0; color: var(--text-dim); font-weight: 700; font-size: 0.9rem; cursor: pointer; padding: 4px 7px; border-radius: 7px; font-family: inherit; transition: color 0.2s, background 0.2s; }
+.lang-btn:hover { color: var(--text); }
+.lang-btn.active { color: #fff; background: rgba(255, 255, 255, 0.14); }
+.lang-sep { color: var(--text-dim); opacity: 0.45; }
+
+/* ====== OFFER / VALUE STACK ====== */
+.offer-stack { display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 32px; align-items: start; }
+.offer-list { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.offer-list li { display: flex; gap: 16px; background: var(--surface); border: 1px solid rgba(255,255,255,0.07); border-radius: var(--radius-sm); padding: 18px 20px; }
+.offer-list .check { flex: 0 0 28px; width: 28px; height: 28px; border-radius: 50%; background: var(--grad); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 0.9rem; }
+.offer-list strong { display: block; margin-bottom: 4px; font-size: 1.05rem; }
+.offer-list p { color: var(--text-dim); font-size: 0.94rem; }
+.offer-cta-box { background: var(--surface-2); border: 1px solid rgba(124,58,237,0.4); border-radius: var(--radius); padding: 30px 26px; position: sticky; top: 90px; text-align: center; box-shadow: var(--shadow); }
+.offer-free { font-family: "Outfit"; font-weight: 800; font-size: 1.5rem; margin-bottom: 8px; }
+.offer-note { color: var(--text-dim); font-size: 0.92rem; margin-bottom: 20px; }
+
+/* ====== WHO IT'S FOR ====== */
+.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.fit-card { border-radius: var(--radius); padding: 30px 28px; border: 1px solid rgba(255,255,255,0.08); background: var(--surface); }
+.fit-card h3 { font-size: 1.2rem; margin-bottom: 16px; }
+.fit-card ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+.fit-card li { color: var(--text-dim); }
+.fit-yes { border-color: rgba(34,211,238,0.35); }
+.fit-no { border-color: rgba(219,39,119,0.30); }
+
+/* ====== GUARANTEE ====== */
+.guarantee { display: flex; gap: 28px; align-items: center; background: var(--surface); border: 1px solid rgba(124,58,237,0.35); border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
+.guarantee-badge { flex: 0 0 auto; font-size: 3rem; width: 96px; height: 96px; border-radius: 50%; background: var(--grad); display: grid; place-items: center; }
+.g-text { color: var(--text-dim); font-size: 1.08rem; margin-bottom: 22px; max-width: 640px; }
+
+/* ====== APPLY ====== */
+.apply-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.apply-perks { list-style: none; display: flex; flex-direction: column; gap: 10px; margin: 22px 0 24px; }
+.apply-perks li { color: var(--text); font-weight: 600; }
+
 /* ====== RESPONSIVE ====== */
 @media (max-width: 860px) {
-  .about, .contact-inner { grid-template-columns: 1fr; }
+  .about, .contact-inner, .apply-inner, .offer-stack, .fit-grid { grid-template-columns: 1fr; }
   .about-media { max-width: 360px; margin: 0 auto; }
+  .offer-cta-box { position: static; }
+  .guarantee { flex-direction: column; text-align: center; padding: 32px 24px; }
+  .g-text { margin-left: auto; margin-right: auto; }
   .nav-toggle { display: flex; }
   .nav-links {
     position: absolute; top: 72px; left: 0; right: 0;
@@ -259,10 +300,11 @@ a { color: inherit; text-decoration: none; }
     background: var(--bg-alt); border-bottom: 1px solid rgba(255,255,255,0.08);
     max-height: 0; overflow: hidden; transition: max-height 0.35s var(--ease);
   }
-  .nav-links.open { max-height: 420px; }
+  .nav-links.open { max-height: 540px; }
   .nav-links li { border-top: 1px solid rgba(255,255,255,0.06); }
   .nav-links a { display: block; padding: 16px 24px; }
   .nav-links a.btn-nav { margin: 12px 24px; text-align: center; }
+  .nav-lang { justify-content: center; padding: 12px 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
