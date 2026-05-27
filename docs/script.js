@@ -19,7 +19,7 @@ const CONFIG = {
   // In your Sheet: Extensions > Apps Script, paste the doPost script, Deploy as
   // a Web App (access: Anyone), then paste its /exec URL here.
   // e.g. "https://script.google.com/macros/s/AKfy.../exec".
-  googleSheetUrl: "",
+  googleSheetUrl: "https://script.google.com/macros/s/AKfycbzx3-c3S0E1sZhaHKlPOAwIcUDTRTBy01fY3ZUtqIUfcrluPtq-M0yxZDHjb5DHV1-AbQ/exec",
 };
 
 /* =====================================================
