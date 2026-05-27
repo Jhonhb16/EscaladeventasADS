@@ -15,6 +15,11 @@ const CONFIG = {
   //    From the endpoint https://formspree.io/f/abcdwxyz  ->  use "abcdwxyz".
   // Leave "" to keep WhatsApp-only (nothing is stored).
   formspreeId: "xgoqpdya",
+  // Google Sheets backup (optional). Each lead is also appended as a row.
+  // In your Sheet: Extensions > Apps Script, paste the doPost script, Deploy as
+  // a Web App (access: Anyone), then paste its /exec URL here.
+  // e.g. "https://script.google.com/macros/s/AKfy.../exec".
+  googleSheetUrl: "",
 };
 
 /* =====================================================
@@ -388,6 +393,28 @@ const I18N = {
     return res.ok;
   }
 
+  function saveToSheet(d) {
+    if (!CONFIG.googleSheetUrl) return Promise.resolve();
+    // Apps Script web apps don't send CORS headers, so this is a fire-and-forget
+    // no-cors POST (the row is written; the opaque response can't be read).
+    return fetch(CONFIG.googleSheetUrl, {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        date: new Date().toISOString(),
+        name: d.get("name"),
+        email: d.get("email"),
+        website_or_ig: d.get("site") || "-",
+        sells: d.get("sell"),
+        monthly_revenue: d.get("revenue"),
+        ad_budget: d.get("budget"),
+        challenge: d.get("message"),
+        lang: lang,
+      }),
+    }).catch(() => {});
+  }
+
   if (form) {
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
@@ -408,19 +435,26 @@ const I18N = {
         `${m.msg_challenge}: ${d.get("message")}`;
       const waUrl = `${waBase}?text=${encodeURIComponent(text)}`;
 
+      const hasStore = CONFIG.formspreeId || CONFIG.googleSheetUrl;
       let saved = false;
-      if (CONFIG.formspreeId) {
+      if (hasStore) {
         setStatus(m.f_sending, "");
-        try {
-          saved = await saveLead(d);
-        } catch (err) {
-          saved = false;
+        const tasks = [saveToSheet(d)];
+        if (CONFIG.formspreeId) {
+          tasks.push(
+            saveLead(d)
+              .then((ok) => { if (ok) saved = true; })
+              .catch(() => {})
+          );
         }
+        // A Google Sheet write is fire-and-forget, so configuring it counts as saved.
+        if (CONFIG.googleSheetUrl) saved = true;
+        await Promise.all(tasks);
       }
 
       window.open(waUrl, "_blank");
 
-      if (CONFIG.formspreeId) {
+      if (hasStore) {
         if (saved) {
           setStatus(m.f_ok, "ok");
           form.reset();
