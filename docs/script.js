@@ -9,6 +9,12 @@ const CONFIG = {
   // Paste your VSL link here (YouTube or Vimeo). Leave "" to show the placeholder.
   // Examples: "https://youtu.be/XXXXXXXXXXX" or "https://vimeo.com/123456789"
   vsl: "",
+  // Lead backup + storage (recommended). Every application is also saved here and
+  // emailed to you, so you never lose a lead — even if they don't finish on WhatsApp.
+  // 1) Create a free form at https://formspree.io  2) Paste only the ID below.
+  //    From the endpoint https://formspree.io/f/abcdwxyz  ->  use "abcdwxyz".
+  // Leave "" to keep WhatsApp-only (nothing is stored).
+  formspreeId: "",
 };
 
 /* =====================================================
@@ -113,7 +119,11 @@ const I18N = {
     f_rev: "Monthly revenue", f_rev1: "Under $10k / month", f_rev2: "$10k – $50k / month", f_rev3: "$50k – $100k / month", f_rev4: "$100k+ / month",
     f_bud: "Monthly ad budget you can invest", f_bud0: "Not sure yet", f_bud1: "$500 – $1k / month", f_bud2: "$1k – $5k / month", f_bud3: "$5k+ / month",
     f_msg: "Your biggest marketing challenge", f_msg_ph: "Tell me what you want to achieve",
-    f_submit: "Send my application", f_note: "Sends your application straight to me via WhatsApp.",
+    f_submit: "Send my application", f_note: "Your application is saved and WhatsApp opens so you can send it to me.",
+    f_sending: "Sending your application…",
+    f_ok: "Got it — I received your application. WhatsApp opened; send the message to confirm.",
+    f_err: "WhatsApp opened to send your application. We couldn't save a backup, so please be sure to hit send.",
+    f_wa: "WhatsApp opened — hit send to deliver your application.",
 
     footer_rights: "All rights reserved.", footer_cta: "Apply free",
 
@@ -220,7 +230,11 @@ const I18N = {
     f_rev: "Ingresos mensuales", f_rev1: "Menos de $10k / mes", f_rev2: "$10k – $50k / mes", f_rev3: "$50k – $100k / mes", f_rev4: "$100k+ / mes",
     f_bud: "Presupuesto mensual de anuncios que puedes invertir", f_bud0: "Aún no estoy seguro", f_bud1: "$500 – $1k / mes", f_bud2: "$1k – $5k / mes", f_bud3: "$5k+ / mes",
     f_msg: "Tu mayor reto de marketing", f_msg_ph: "Cuéntame qué quieres lograr",
-    f_submit: "Enviar mi aplicación", f_note: "Envía tu aplicación directamente a mí por WhatsApp.",
+    f_submit: "Enviar mi aplicación", f_note: "Tu aplicación queda guardada y se abre WhatsApp para que me la envíes.",
+    f_sending: "Enviando tu aplicación…",
+    f_ok: "¡Listo! Recibí tu aplicación. Se abrió WhatsApp; envía el mensaje para confirmar.",
+    f_err: "Se abrió WhatsApp para enviar tu aplicación. No pudimos guardar una copia, así que asegúrate de presionar enviar.",
+    f_wa: "Se abrió WhatsApp — presiona enviar para mandar tu aplicación.",
 
     footer_rights: "Todos los derechos reservados.", footer_cta: "Aplicar gratis",
 
@@ -345,10 +359,37 @@ const I18N = {
     revealTargets.forEach((el) => el.classList.add("visible"));
   }
 
-  // --- Application form -> WhatsApp ---
+  // --- Application form -> save (Formspree) + WhatsApp ---
   const form = document.getElementById("apply-form");
+  const statusEl = document.getElementById("form-status");
+
+  function setStatus(msg, kind) {
+    if (!statusEl) return;
+    statusEl.textContent = msg || "";
+    statusEl.className = "form-status" + (kind ? " is-" + kind : "");
+  }
+
+  async function saveLead(d) {
+    if (!CONFIG.formspreeId) return false;
+    const res = await fetch(`https://formspree.io/f/${CONFIG.formspreeId}`, {
+      method: "POST",
+      headers: { Accept: "application/json", "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: d.get("name"),
+        email: d.get("email"),
+        website_or_ig: d.get("site") || "-",
+        sells: d.get("sell"),
+        monthly_revenue: d.get("revenue"),
+        ad_budget: d.get("budget"),
+        challenge: d.get("message"),
+        _subject: `New application: ${d.get("name")}`,
+      }),
+    });
+    return res.ok;
+  }
+
   if (form) {
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       if (!form.checkValidity()) {
         form.reportValidity();
@@ -365,7 +406,30 @@ const I18N = {
         `${m.msg_revenue}: ${d.get("revenue")}\n` +
         `${m.msg_budget}: ${d.get("budget")}\n\n` +
         `${m.msg_challenge}: ${d.get("message")}`;
-      window.open(`${waBase}?text=${encodeURIComponent(text)}`, "_blank");
+      const waUrl = `${waBase}?text=${encodeURIComponent(text)}`;
+
+      let saved = false;
+      if (CONFIG.formspreeId) {
+        setStatus(m.f_sending, "");
+        try {
+          saved = await saveLead(d);
+        } catch (err) {
+          saved = false;
+        }
+      }
+
+      window.open(waUrl, "_blank");
+
+      if (CONFIG.formspreeId) {
+        if (saved) {
+          setStatus(m.f_ok, "ok");
+          form.reset();
+        } else {
+          setStatus(m.f_err, "err");
+        }
+      } else {
+        setStatus(m.f_wa, "ok");
+      }
     });
   }
 })();
