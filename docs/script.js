@@ -14,7 +14,7 @@ const CONFIG = {
   // 1) Create a free form at https://formspree.io  2) Paste only the ID below.
   //    From the endpoint https://formspree.io/f/abcdwxyz  ->  use "abcdwxyz".
   // Leave "" to keep WhatsApp-only (nothing is stored).
-  formspreeId: "",
+  formspreeId: "xgoqpdya",
 };
 
 /* =====================================================
