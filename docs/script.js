@@ -11,6 +11,12 @@ const CONFIG = {
   formspreeId: "xgoqpdya",
   // Captura de leads en Google Sheet (Apps Script Web App).
   googleSheetUrl: "https://script.google.com/macros/s/AKfycbzx3-c3S0E1sZhaHKlPOAwIcUDTRTBy01fY3ZUtqIUfcrluPtq-M0yxZDHjb5DHV1-AbQ/exec",
+  // Testimonios en video. Sube cada video a YouTube como "No listado" (gratis)
+  // y agrega aquí un objeto con su enlace, nombre y rol. Array vacío = placeholders.
+  testimonials: [
+    // { name: "Bianca Benavides", role: "Start Academy · Ecuador", video: "https://youtu.be/XXXXXXXXXXX" },
+    // { name: "Otro cliente", role: "Rubro · País", video: "https://youtu.be/XXXXXXXXXXX" },
+  ],
 };
 
 (function () {
@@ -61,6 +67,65 @@ const CONFIG = {
     }
   }
 
+  // --- Testimonios en video ---
+  function ytId(url) {
+    const m = url && url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+    return m ? m[1] : null;
+  }
+
+  const vtWrap = document.getElementById("video-testimonials");
+  if (vtWrap) {
+    const items = Array.isArray(CONFIG.testimonials) ? CONFIG.testimonials : [];
+    if (items.length) {
+      items.forEach((t) => {
+        const embed = vslEmbedUrl(t.video);
+        const fig = document.createElement("figure");
+        fig.className = "vtesti";
+
+        const player = document.createElement("div");
+        player.className = "vtesti-player";
+        const yid = ytId(t.video);
+        if (yid) player.style.backgroundImage = `url("https://img.youtube.com/vi/${yid}/hqdefault.jpg")`;
+        player.innerHTML =
+          '<button class="vsl-play" type="button" aria-label="Reproducir testimonio"><svg class="icon icon-fill"><use href="#i-play" /></svg></button>';
+
+        if (embed) {
+          player.querySelector(".vsl-play").addEventListener("click", () => {
+            const f = document.createElement("iframe");
+            f.className = "vsl-iframe";
+            f.src = embed;
+            f.title = `Testimonio de ${t.name || "cliente"}`;
+            f.allow = "autoplay; fullscreen; picture-in-picture";
+            f.allowFullscreen = true;
+            player.innerHTML = "";
+            player.appendChild(f);
+          });
+        }
+
+        const cap = document.createElement("figcaption");
+        const strong = document.createElement("strong");
+        strong.textContent = t.name || "";
+        const span = document.createElement("span");
+        span.textContent = t.role || "";
+        cap.appendChild(strong);
+        cap.appendChild(span);
+
+        fig.appendChild(player);
+        fig.appendChild(cap);
+        vtWrap.appendChild(fig);
+      });
+    } else {
+      for (let i = 0; i < 3; i++) {
+        const fig = document.createElement("figure");
+        fig.className = "vtesti vtesti-empty";
+        fig.innerHTML =
+          '<div class="vtesti-player"><span class="vtesti-ph">Testimonio en video · próximamente</span></div>' +
+          "<figcaption><strong>Cliente</strong><span>Pendiente de publicar</span></figcaption>";
+        vtWrap.appendChild(fig);
+      }
+    }
+  }
+
   // --- Menú móvil ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
@@ -79,7 +144,7 @@ const CONFIG = {
 
   // --- Animación al hacer scroll ---
   const revealTargets = document.querySelectorAll(
-    ".step, .testimonial, .section-head, .about-media, .about-body, .hero-stats li, .guarantee, .vsl-player, .capability, .case-card, .verticals-grid li, .offer-stack-card, .offer-side, .reason-why, .faq-item"
+    ".step, .vtesti, .section-head, .about-media, .about-body, .hero-stats li, .guarantee, .vsl-player, .capability, .case-card, .verticals-grid li, .offer-stack-card, .offer-side, .reason-why, .faq-item"
   );
   revealTargets.forEach((el) => el.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
