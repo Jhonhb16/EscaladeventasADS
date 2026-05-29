@@ -79,7 +79,7 @@ const CONFIG = {
 
   // --- Animación al hacer scroll ---
   const revealTargets = document.querySelectorAll(
-    ".offer-list li, .step, .testimonial, .section-head, .about-media, .about-body, .hero-stats li, .guarantee, .vsl-player, .capability, .case-card, .verticals-grid li, .offer-mod"
+    ".step, .testimonial, .section-head, .about-media, .about-body, .hero-stats li, .guarantee, .vsl-player, .capability, .case-card, .verticals-grid li, .offer-stack-card, .offer-side, .reason-why, .faq-item"
   );
   revealTargets.forEach((el) => el.classList.add("reveal"));
   if ("IntersectionObserver" in window) {
