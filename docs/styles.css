@@ -416,6 +416,153 @@ a { color: inherit; text-decoration: none; }
   .proof-grid { grid-template-columns: 1fr; }
 }
 
+/* ====== CAPACIDADES ====== */
+.capabilities-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.capability {
+  background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius); padding: 30px 26px;
+  transition: transform 0.3s var(--ease), border-color 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
+}
+.capability::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: var(--grad);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease);
+}
+.capability:hover { transform: translateY(-6px); border-color: rgba(79, 124, 255, 0.45); box-shadow: var(--shadow); }
+.capability:hover::before { transform: scaleX(1); }
+.capability-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: grid; place-items: center; margin-bottom: 18px;
+  background: linear-gradient(135deg, rgba(79, 124, 255, 0.18), rgba(45, 212, 191, 0.18));
+  color: var(--accent);
+}
+.capability-ico svg { width: 24px; height: 24px; stroke-width: 2; }
+.capability h3 { font-size: 1.2rem; margin-bottom: 10px; }
+.capability p { color: var(--text-dim); font-size: 0.95rem; }
+
+/* ====== VERTICALES ====== */
+.verticals-grid {
+  list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;
+  max-width: 920px; margin: 0 auto;
+}
+.verticals-grid li {
+  font-family: "Outfit", sans-serif; font-weight: 700; font-size: 0.98rem;
+  padding: 12px 22px; border-radius: 999px;
+  background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.25s, transform 0.25s, color 0.25s;
+}
+.verticals-grid li:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+/* ====== CASOS ====== */
+.case-card {
+  background: var(--surface); border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius); padding: 32px 30px;
+  display: flex; flex-direction: column; gap: 14px;
+}
+.case-tag {
+  display: inline-block; align-self: flex-start;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 6px 12px; border-radius: 999px;
+  background: rgba(45, 212, 191, 0.12); color: var(--accent);
+  border: 1px solid rgba(45, 212, 191, 0.25);
+}
+.case-title {
+  font-size: 1.32rem; font-family: "Outfit", sans-serif; font-weight: 800;
+}
+.case-context, .case-action, .case-note {
+  color: var(--text-dim); font-size: 0.96rem; line-height: 1.6;
+}
+.case-context strong, .case-action strong { color: var(--text); font-weight: 700; }
+.case-note { font-size: 0.9rem; font-style: italic; opacity: 0.85; }
+
+.case-featured {
+  background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  border: 1px solid rgba(79, 124, 255, 0.35);
+  box-shadow: var(--shadow);
+  padding: 40px 36px;
+  margin-bottom: 32px;
+}
+.case-featured .case-title { font-size: 1.55rem; }
+.case-featured .case-tag {
+  background: rgba(79, 124, 255, 0.15); color: var(--primary); border-color: rgba(79, 124, 255, 0.3);
+}
+
+.case-metrics {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  margin-top: 10px;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.case-metrics > div { text-align: center; }
+.case-metrics span {
+  display: block; color: var(--text-dim); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+.case-metrics strong {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  font-family: "Outfit", sans-serif; font-weight: 800; font-size: 1.6rem;
+  background: var(--grad); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  line-height: 1;
+}
+.case-metrics strong small {
+  font-family: "Plus Jakarta Sans", sans-serif; font-weight: 500; font-size: 0.7rem;
+  color: var(--text-dim); -webkit-text-fill-color: var(--text-dim); letter-spacing: 0.02em;
+  text-transform: none;
+}
+.case-metrics.small strong { font-size: 1.3rem; }
+
+.cases-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.cases-foot {
+  margin-top: 36px; text-align: center; color: var(--text-dim); font-size: 0.98rem;
+}
+.cases-foot strong { color: var(--text); }
+
+/* ====== MÓDULO DE OFERTA (mes gratis re-ubicado) ====== */
+.offer-mod {
+  max-width: 880px; margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid rgba(79, 124, 255, 0.35);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+.offer-mod .section-title { font-size: clamp(1.7rem, 3.4vw, 2.4rem); margin-bottom: 14px; }
+.offer-mod .offer-intro {
+  color: var(--text-dim); font-size: 1.05rem; max-width: 660px; margin: 0 auto 28px;
+}
+.offer-mod .offer-list {
+  text-align: left; max-width: 680px; margin: 0 auto 28px;
+}
+.offer-mod .offer-foot {
+  margin-top: 18px; color: var(--text-dim); font-size: 0.88rem;
+}
+
+/* ====== SOBRE MÍ extra ====== */
+.about-subhead {
+  margin-top: 28px; margin-bottom: 10px;
+  font-size: 1.15rem; font-family: "Outfit", sans-serif; font-weight: 800;
+  color: var(--text);
+}
+.about-body p strong { color: var(--text); }
+
+@media (max-width: 760px) {
+  .proof-grid, .cases-grid { grid-template-columns: 1fr; }
+  .case-metrics { grid-template-columns: 1fr 1fr; }
+  .case-metrics > div:nth-child(3) { grid-column: 1 / -1; }
+  .offer-mod { padding: 32px 22px; }
+  .case-featured { padding: 30px 24px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
