@@ -126,37 +126,7 @@ const CONFIG = {
     }
   }
 
-  function applyLang(next) {
-    lang = I18N[next] ? next : "en";
-    const dict = I18N[lang];
-    localStorage.setItem("site_lang", lang);
-    document.documentElement.lang = lang;
-    if (dict.doc_title) document.title = dict.doc_title;
-
-    document.querySelectorAll("[data-i18n]").forEach((el) => {
-      const v = dict[el.dataset.i18n];
-      if (v != null) el.innerHTML = v;
-    });
-    document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
-      const v = dict[el.dataset.i18nPh];
-      if (v != null) el.placeholder = v;
-    });
-    document.querySelectorAll(".lang-btn").forEach((b) =>
-      b.classList.toggle("active", b.dataset.lang === lang)
-    );
-
-    const waDefault = `${waBase}?text=${encodeURIComponent(dict.wa_default)}`;
-    const floatEl = document.getElementById("whatsapp-float");
-    if (floatEl) floatEl.href = waDefault;
-  }
-
-  document.querySelectorAll(".lang-btn").forEach((b) =>
-    b.addEventListener("click", () => applyLang(b.dataset.lang))
-  );
-
-  applyLang(lang);
-
-  // --- Mobile menu ---
+  // --- Menú móvil ---
   const toggle = document.querySelector(".nav-toggle");
   const links = document.querySelector(".nav-links");
   if (toggle && links) {
